@@ -11,7 +11,8 @@ m = length(y); % number of training examples
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
-J = (1 / (2*m)) * sum([(X(:,1) * theta(1) + X(:,2) * theta(2) - y).^2])
+
+J = (1 / (2*m)) * sum((X * theta - y).^2);
 % =========================================================================
 
 end

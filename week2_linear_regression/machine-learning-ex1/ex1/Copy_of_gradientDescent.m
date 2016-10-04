@@ -16,17 +16,19 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-    % X(:,1) is always == 1
+    %X(:,1) is always == 1
+    theta0_temp =... % after derivation of J(t0, t1) by t0
+        theta(1)- alpha * (1/m) * sum(theta(1) + theta(2) * X(:,2) - y);
     
-    % bsxfun(V,M) - to do elementwise multiplication of vector and matrix
-    %   [1; 2; 3] * [1 1; 2 2; 3 3] = [1 1; 4 4; 9 9]
-    % V = (h_theta * X - y)
-    % M = X
+    theta1_temp =... % after derivation of J(t0, t1) by t1
+        theta(2)- alpha * (1/m) * sum((theta(1) + theta(2) * X(:,2) - y) .* X(:,2));
 
-    delta = (1/m) * sum(bsxfun(@times, X * theta - y, X));
-    theta_temp = theta - alpha * transpose(delta);
-    theta = theta_temp;
+    theta = [theta0_temp; theta1_temp];
+    
 
+    
+
+    
     % ============================================================
 
     % Save the cost J in every iteration

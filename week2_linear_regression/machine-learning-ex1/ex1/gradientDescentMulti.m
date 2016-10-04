@@ -18,13 +18,9 @@ for iter = 1:num_iters
     %
 
 
-
-
-
-
-
-
-
+    delta = (1/m) * sum(bsxfun(@times, X * theta - y, X));
+    theta_temp = theta - alpha * transpose(delta);
+    theta = theta_temp;
 
 
     % ============================================================
